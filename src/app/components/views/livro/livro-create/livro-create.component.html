@@ -1,0 +1,39 @@
+<div class="content">
+
+    <div class="title">
+        <h1>Novo Livro</h1>
+    </div>
+
+    <form autocomplete="off" >
+        <mat-form-field class="form">
+            <mat-label>Titulo</mat-label>
+            <input matInput [(ngModel)]="livro.titulo" [formControl]="titulo" required type="text"  name="titulo" placeholder="Titulo" maxlength="100"/>
+            
+            <!--Mensagem de erro-->
+            <mat-error *ngIf="titulo.invalid">{{ getMessage() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form">
+            <mat-label>Nome do Autor</mat-label>
+            <input matInput [(ngModel)]="livro.nomeAutor" [formControl]="nomeAutor" required type="text"  name="nomeAutor" placeholder="Nome Autor" maxlength="100"/>
+            
+            <!--Mensagem de erro-->
+            <mat-error *ngIf="nomeAutor.invalid">{{ getMessage() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form">
+            <mat-label>Texto</mat-label>
+            <textarea matInput [(ngModel)]="livro.texto" [formControl]="texto" required type="text"  name="texto" placeholder="Texto Livro" maxlength="2000000"></textarea>
+        
+            <!--Mensagem de erro-->
+            <mat-error *ngIf="texto.invalid">{{ getMessage() }}</mat-error>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button (click)="create()" [disabled]="getMessage()" class="mat-elevation-z8" mat-flat-button color="primary">Salvar</button>
+            <button class="mat-elevation-z8" mat-flat-button color="warning" (click)="irParaLivros()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

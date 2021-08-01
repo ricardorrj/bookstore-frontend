@@ -1,0 +1,58 @@
+<div class="content">
+
+    <div class="title">
+        <h1>Livros por Categoria</h1>
+    </div>
+
+    
+    <button class="novo mat-elevation-z8" (click)="irParaCriarLivro()" mat-flat-button color="primary">
+        Novo Livro
+    </button>
+
+    <button class="novo mat-elevation-z8" (click)="irParaCategorias()" mat-flat-button color="secondary">
+        Voltar
+    </button>
+
+    <div class="mat-elevation-z8 content-table">
+        <table class="table" mat-table [dataSource]="listLivros">      
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef> Titulo </th>
+                <td mat-cell *matCellDef="let row"> {{ row.titulo }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="texto">
+                <th mat-header-cell *matHeaderCellDef> Texto </th>
+                <td mat-cell *matCellDef="let row">
+                    <a routerLink="{{ row.id }}/read" class="edit">
+                        <i class="material-icons livros">book</i>
+                    </a>
+                </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="acoes">
+                <th class="mat-header" mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let row">
+                    <a routerLink="{{ row.id }}/update" class="edit">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    
+                    <a routerLink="{{ row.id }}/delete" class="delete">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+      
+</div>
